@@ -1,0 +1,26 @@
+﻿<Window x:Class="Project.Log_in"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+      WindowStartupLocation="CenterScreen"
+        Title="Log in"  Height="383" Width="499.333" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="BACK.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="279,85,0,0" VerticalAlignment="Top" Height="30" Width="46" FontFamily="Calibri Light" FontSize="16"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="258,141,0,0" VerticalAlignment="Top" Height="25" Width="69" FontSize="16" FontFamily=" Calibri light"/>
+        <TextBox x:Name="login" HorizontalAlignment="Left" Height="28" Margin="332,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" CaretBrush="#FF2247C5"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="332,140,0,0" VerticalAlignment="Top" Height="28" Width="140" CaretBrush="#FF2247C5" Foreground="Black"/>
+        <Label Content="Log in" HorizontalAlignment="Left" Margin="258,34,0,0" VerticalAlignment="Top" Height="34" Width="67" Cursor="None" Foreground="#DD0C248F" FontSize="20" FontFamily="Calibri Light"/>
+        <Button x:Name="enter" Content="Enter" HorizontalAlignment="Left" Height="30" Margin="387,200,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button x:Name="registration" Content="Registration" HorizontalAlignment="Left" Height="30" Margin="258,200,0,0" VerticalAlignment="Top" Width="110" Click="Button1_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="30" Margin="387,291,0,0" VerticalAlignment="Top" Width="79" Click="Button2_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+    </Grid>
+</Window>
