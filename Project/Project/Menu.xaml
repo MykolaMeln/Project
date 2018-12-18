@@ -18,7 +18,7 @@
         <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="29" Margin="673,364,0,0" VerticalAlignment="Top" Width="85" Click="Button5_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
         <Button x:Name="log_out" Content="Log out" HorizontalAlignment="Left" Height="37" Margin="640,10,0,0" VerticalAlignment="Top" Width="132" Click="Button6_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
         <Button x:Name="users" Content="Users" HorizontalAlignment="Left" Height="37" Margin="245,10,0,0" VerticalAlignment="Top" Width="132" Click="Button8_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Grid x:Name="radioinfo" Margin="213,52,22,83" Background="Azure" Visibility="Hidden">
+        <Grid x:Name="radioinfo" Margin="213,52,22,83" Background="Azure" Visibility="Visible">
             <Label x:Name="name" Content="Change Radio" HorizontalAlignment="Left" Height="30" Margin="10,8,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
             <Image x:Name="image" Source="BACK.jpg" Margin="10,43,388,132"/>
             <Label Content="Chastota" Margin="10,155,490,105"/>

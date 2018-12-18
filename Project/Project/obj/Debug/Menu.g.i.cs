@@ -115,14 +115,6 @@ namespace Project
 #line hidden
 
 
-#line 21 "..\..\Menu.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Grid radioinfo;
-
-#line default
-#line hidden
-
-
 #line 22 "..\..\Menu.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label name;
@@ -332,6 +324,7 @@ namespace Project
         }
 
         internal System.Windows.Controls.Grid deluser;
+        internal System.Windows.Controls.Grid radioinfo;
     }
 }
 
