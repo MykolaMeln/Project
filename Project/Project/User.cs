@@ -10,9 +10,9 @@ namespace Project
     {
         public string Login { get; set; }
         public string Password { get; set; }
-        public bool Index { get; set; }
-
-        public User(string login, string password, bool index)
+        public int Index { get; set; }
+        public User() { }
+        public User(string login, string password, int index)
         {
             Login = login;
             Password = password;

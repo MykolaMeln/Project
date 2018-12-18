@@ -11,7 +11,7 @@
         <ImageBrush ImageSource="BACK.jpg"/>
     </Window.Background>
     <Grid>
-      
+
         <Label Content="Login" HorizontalAlignment="Left" Margin="279,99,0,0" VerticalAlignment="Top" Height="29" Width="46" FontFamily="Calibri Light" FontSize="16"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="264,146,0,0" VerticalAlignment="Top" Height="27" Width="70" FontFamily="Calibri Light" FontSize="16"/>
         <TextBox x:Name="login" HorizontalAlignment="Left" Height="28" Margin="332,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2"/>
@@ -19,7 +19,7 @@
         <Label Content="Log up" HorizontalAlignment="Left" Margin="264,44,0,0" VerticalAlignment="Top" Height="34" Width="105" Cursor="None" FontFamily="Calibri Light" FontSize="20" Foreground="#DD0C248F"/>
         <CheckBox x:Name="index" Content="admin" HorizontalAlignment="Left" Margin="298,199,0,0" VerticalAlignment="Top" Height="25" Width="59" Foreground="#DD000000" Background="#FF0A64A0" />
         <Button x:Name="enter" Content="Enter" HorizontalAlignment="Left" Height="30" Margin="374,197,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click" Background="#FF0064A0" BorderBrush="#FF005064" Grid.ColumnSpan="2"/>
-        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="30" Margin="374,285,0,0" VerticalAlignment="Top" Width="79" Click="Button1_Click" Background="#FF0064A0" BorderBrush="#FF005064" Grid.ColumnSpan="2"/>
+        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="30" Margin="374,292,0,0" VerticalAlignment="Top" Width="79" Click="Button1_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
         <Button x:Name="log_in" Content="Log in" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="72" Click="Button2_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
     </Grid>
 </Window>

@@ -7,22 +7,37 @@
         mc:Ignorable="d"
      WindowStartupLocation="CenterScreen"
         Title="Menu" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid Background="#FF203566">
+    <Grid Background="#FF3A538D">
         <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Height="60" Margin="30,261,0,0" VerticalAlignment="Top" Width="163" Click="Button3_Click" Background="#FF0064A0" BorderBrush="#FF005064"  FontFamily="Calibri Light" FontSize="20"/>
-        <Label x:Name="loginlabel" Content="Log in pleace!" HorizontalAlignment="Left" Height="42" Margin="604,5,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-        <Label Content="Radio-Stations" HorizontalAlignment="Left" Height="37" Margin="68,10,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-        <Button x:Name="radio" Content="Radio1" HorizontalAlignment="Left" Height="60" Margin="30,65,0,0" VerticalAlignment="Top" Width="163" Click="Button_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="10"/>
-        <Button x:Name="radio1" Content="Radio2" HorizontalAlignment="Left" Height="60" Margin="30,130,0,0" VerticalAlignment="Top" Width="163" Click="Button1_Click" Background="#FF3606D8" BorderBrush="#FF005064" FontFamily="Calibri Light" FontSize="20"/>
-        <Button x:Name="radio2" Content="Radio3" HorizontalAlignment="Left" Height="60" Margin="30,196,0,0" VerticalAlignment="Top" Width="163" Click="Button2_Click" Background="#FF0064A0" BorderBrush="#FF005064"  FontFamily="Calibri Light" FontSize="20"/>
-        <Button x:Name="radio3" Content="Radio4" HorizontalAlignment="Left" Height="60" Margin="30,261,0,0" VerticalAlignment="Top" Width="163" Click="Button3_Click" Background="#FF0064A0" BorderBrush="#FF005064"  FontFamily="Calibri Light" FontSize="20"/>
-        <GroupBox x:Name="station" Header="Change radio-station"  FontFamily="Calibri Light" FontSize="15" HorizontalAlignment="Left" Height="256" Margin="198,52,0,0" VerticalAlignment="Top" Width="511" Visibility="Hidden">
-            <ListView x:Name="rozklad" HorizontalAlignment="Left" Height="225" Margin="206,0,0,0" VerticalAlignment="Top" Width="284" Background="#00000000">
+        <Label x:Name="loginlabel" Content="Log in pleace!" HorizontalAlignment="Left" Height="42" Margin="476,5,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
+        <Label Content="Radio-Stations" HorizontalAlignment="Left" Height="37" Margin="37,10,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
+        <Button x:Name="radio1" Content="Radio1" HorizontalAlignment="Left" Height="60" Margin="30,65,0,0" VerticalAlignment="Top" Width="163" Click="Button1_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+        <Button x:Name="radio2" Content="Radio2" HorizontalAlignment="Left" Height="60" Margin="30,130,0,0" VerticalAlignment="Top" Width="163" Click="Button2_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+        <Button x:Name="radio3" Content="Radio3" HorizontalAlignment="Left" Height="60" Margin="30,196,0,0" VerticalAlignment="Top" Width="163" Click="Button3_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+        <Button x:Name="radio4" Content="Radio4" HorizontalAlignment="Left" Height="60" Margin="30,261,0,0" VerticalAlignment="Top" Width="163" Click="Button4_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="29" Margin="673,364,0,0" VerticalAlignment="Top" Width="85" Click="Button5_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button x:Name="log_out" Content="Log out" HorizontalAlignment="Left" Height="37" Margin="640,10,0,0" VerticalAlignment="Top" Width="132" Click="Button6_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button x:Name="users" Content="Users" HorizontalAlignment="Left" Height="37" Margin="245,10,0,0" VerticalAlignment="Top" Width="132" Click="Button8_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Grid x:Name="radioinfo" Margin="213,52,22,83" Background="Azure" Visibility="Hidden">
+            <Label x:Name="name" Content="Change Radio" HorizontalAlignment="Left" Height="30" Margin="10,8,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
+            <Image x:Name="image" Source="BACK.jpg" Margin="10,43,388,132"/>
+            <Label Content="Chastota" Margin="10,155,490,105"/>
+            <Label x:Name="chastota" Content="120 Gz" Margin="10,187,490,73"/>
+            <ListView x:Name="rozklad" HorizontalAlignment="Left" Height="225" Margin="250,29,0,0" VerticalAlignment="Top" Width="284" Background="#00000000">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-        </GroupBox>
+        </Grid>
+        <Grid x:Name="deluser" Visibility="Hidden">
+        <DataGrid x:Name="radio" Margin="213,61,36,74" Background="Azure">
+
+        </DataGrid>
+        <Label x:Name="loguser" Content="Delete User" HorizontalAlignment="Left" Height="30" Margin="213,365,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
+        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Height="37" Margin="498,358,0,0" VerticalAlignment="Top" Width="132" Click="Button7_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <TextBox x:Name="userdel" HorizontalAlignment="Left" Height="28" Margin="321,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        </Grid>
     </Grid>
 </Window>
