@@ -8,9 +8,9 @@ namespace Project
 {
     class User
     {
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public int Index { get; set; }
+        public string Login { get; set; }//логін користувача
+        public string Password { get; set; }//пароль користувача 
+        public int Index { get; set; }//адміністратор чи ні
         public User() { }
         public User(string login, string password, int index)
         {
@@ -18,7 +18,6 @@ namespace Project
             Password = password;
             Index = index;
         }
-        
         
     }
 }

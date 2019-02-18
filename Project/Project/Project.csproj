@@ -61,7 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Favorites.cs" />
+    <Compile Include="IFavorites.cs" />
+    <Compile Include="IRating.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Radio.cs" />
+    <Compile Include="Rating.cs" />
+    <Compile Include="Stations.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Users.cs" />
     <Page Include="Log_in.xaml">

@@ -8,9 +8,9 @@ namespace Project
 {
     class Users
     {
-        public List<User> users = new List<User>();
+        public List<User> users = new List<User>();//список користувачів
         public Users() { }
-        public void AddUser(User user)
+        public void AddUser(User user)//додавання користувача в список
         {
             users.Add(user);
         }

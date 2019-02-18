@@ -18,7 +18,7 @@ namespace Project
     /// <summary>
     /// Логика взаимодействия для Log_in.xaml
     /// </summary>
-    public partial class Log_in : Window
+    public partial class Log_in : Window//вхід
     {
         string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True";
         public Log_in()
@@ -84,13 +84,23 @@ namespace Project
                 {
                     Menu win1 = new Menu();
                     win1.loginlabel.Content = login.Text;
+                    win1.users.Visibility = Visibility.Visible;
+                    win1.radioinfo.Visibility = Visibility.Visible;
+                    win1.chastota.Visibility = Visibility.Hidden;
+                    win1.name.Visibility = Visibility.Hidden;
+                    win1.chast.Visibility = Visibility.Hidden;
+                    win1.addprogram.Visibility = Visibility.Visible;
                     win1.Show();
                 }
                 else
                 if ((user.Index == 0) && (user.Login == log) && (user.Password == pass))
                 {
-                    Log_in logi = new Log_in();
-                    logi.Show();
+                    Menu win1 = new Menu();
+                    win1.loginlabel.Content = login.Text;
+                    win1.deluser.Visibility = Visibility.Hidden;
+                    win1.users.Visibility = Visibility.Hidden;
+                    win1.radioinfo.Visibility = Visibility.Visible;
+                    win1.Show();
                 }
             }
 

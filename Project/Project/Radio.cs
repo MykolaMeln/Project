@@ -8,14 +8,14 @@ namespace Project
 {
     class Radio
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public float Frequency { get; set; }
-        public Radio(int id, string name, float frequency)
+        public string Name { get; set; }//назва станції
+        public float Frequency { get; set; }//частота відтворення
+        public int Rating { get; set; }//рейтинг
+        public Radio(string name, float frequency, int rating)
         {
-            ID = id;
             Name = name;
             Frequency = frequency;
+            Rating = rating;
         }
     }
 }
