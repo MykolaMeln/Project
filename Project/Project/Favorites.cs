@@ -18,7 +18,7 @@ namespace Project
         }
         public void AddFavorite()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("INSERT INTO Favorites(ID_User,ID_Station) VALUES(@user, @station)", conn);
             conn.Open();
             cmd.Parameters.AddWithValue("@user", User);
@@ -28,7 +28,7 @@ namespace Project
         }
         public void DeleteFavorite()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
             string del = "DELETE FROM Favorites WHERE ID_User=@user AND ID_Station=@station";
             conn.Open();
             SqlCommand cmd = new SqlCommand(del, conn);

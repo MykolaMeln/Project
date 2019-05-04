@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Project.Menu"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,67 +7,93 @@
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
      WindowStartupLocation="CenterScreen"
-        Title="Menu" Height="450" Width="889" ResizeMode="NoResize">
+        Title="Menu" Height="447" Width="889" ResizeMode="NoResize">
     <Grid Background="#FF3A538D">
         <Label x:Name="loginlabel" Content="Log in pleace!" HorizontalAlignment="Left" Height="42" Margin="561,5,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-        <Label Content="Radio-Stations" HorizontalAlignment="Left" Height="37" Margin="17,3,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
-        <Button x:Name="radio1" Content="Radiopepper" HorizontalAlignment="Left" Height="42" Margin="26,50,0,0" VerticalAlignment="Top" Width="145" Click="Button1_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="radio2" Content="Bukovyna" HorizontalAlignment="Left" Height="42" Margin="26,100,0,0" VerticalAlignment="Top" Width="145" Click="Button2_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="radio3" Content="Starlight" HorizontalAlignment="Left" Height="42" Margin="26,150,0,0" VerticalAlignment="Top" Width="145" Click="Button3_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="radio4" Content="RadioRock" HorizontalAlignment="Left" Height="42" Margin="26,200,0,0" VerticalAlignment="Top" Width="145" Click="Button4_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="radio5" Content="UARadio" HorizontalAlignment="Left" Height="42" Margin="26,250,0,0" VerticalAlignment="Top" Width="145" Click="Button11_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="radio6" Content="Energy" HorizontalAlignment="Left" Height="42" Margin="26,300,0,0" VerticalAlignment="Top" Width="145" Click="Button12_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
-        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="29" Margin="769,365,0,0" VerticalAlignment="Top" Width="85" Click="Button5_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Button x:Name="log_out" Content="Log out" HorizontalAlignment="Left" Height="37" Margin="714,8,0,0" VerticalAlignment="Top" Width="132" Click="Button6_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Button x:Name="users" Content="Users" HorizontalAlignment="Left" Height="29" Margin="313,11,0,0" VerticalAlignment="Top" Width="117" Click="Button8_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Hidden"/>
-        <Grid x:Name="radioinfo" Margin="188,52,170,80" Visibility="Visible">
+        <StackPanel Height="355" Width="180" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Label Content="Radio-Stations" HorizontalAlignment="Left" Height="37" Margin="17,3,0,0" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.5,0.5" FontSize="22"/>
+            <Button x:Name="radio1" Content="Radiopepper" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button1_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button x:Name="radio2" Content="Bukovyna" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button2_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button x:Name="radio3" Content="Starlight" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button3_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button x:Name="radio4" Content="RadioRock" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button4_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button x:Name="radio5" Content="UARadio" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button11_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button x:Name="radio6" Content="Energy" HorizontalAlignment="Left" Height="42" Margin="26,5,0,0" VerticalAlignment="Top" Width="145" Click="Button12_Click" Background="#FF272C9E" BorderBrush="White" FontFamily="Calibri Light" FontSize="20" BorderThickness="2"/>
+            <Button  Margin="26,5,0,0" Background="#FF272C9E" Height="21" Width="145" VerticalAlignment="Top" HorizontalAlignment="Left"  BorderBrush="White" BorderThickness="1">
+                <materialDesign:PackIcon Kind="Hide" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+
+        <Button x:Name="close" HorizontalAlignment="Left" Height="46" Margin="797,359,0,0" Opacity="100" VerticalAlignment="Top" Width="66" Click="Button5_Click" Background="#FF3A538D" BorderBrush="#FF005064">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.3" ShadowDepth="6"/>
+            </Button.Effect>
+            <materialDesign:PackIcon Kind="ExitRun" Width="31" Height="30" Foreground="#FF00042D"/>
+        </Button>
+        <Button x:Name="log_out" HorizontalAlignment="Left" Height="33" Margin="810,10,0,0" VerticalAlignment="Top" Width="60" Click="Button6_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="Logout" Width="34" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+        <Button x:Name="users" HorizontalAlignment="Left" Height="29" Margin="313,11,0,0" VerticalAlignment="Top" Width="117" Click="Button8_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Hidden">
+            <materialDesign:PackIcon Kind="Accounts" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+        <Grid x:Name="radioinfo" Margin="188,52,170,80" Visibility="Hidden" Height="289">
             <Grid.Background>
-                <ImageBrush ImageSource="BACK.jpg" Opacity="0.6"/>
+                <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
             </Grid.Background>
             <Label x:Name="name" Content="Change Radio" HorizontalAlignment="Left" Height="30" Margin="10,8,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
             <Label x:Name="chast" Content="Chastota" Margin="124,8,322,244"/>
             <Label x:Name="chastota" Content="120 Ghz" Margin="198,8,259,244"/>
-            <DataGrid x:Name="rozklad" HorizontalAlignment="Left" Height="225" Margin="0,43,0,0" VerticalAlignment="Top" Width="515" Background="#00000000" Foreground="#DDFDFDFD" CanUserResizeColumns="False"/>
+            <DataGrid x:Name="rozklad" HorizontalAlignment="Left" Height="225" Margin="35,43,0,0" VerticalAlignment="Top" Width="480" Background="#00000000" Foreground="#DDFDFDFD" CanUserResizeColumns="False"/>
         </Grid>
-        <Grid x:Name="deluser" Visibility="Hidden">
-            <DataGrid x:Name="radio" Margin="188,52,448,83" Background="#00F0FFFF" Visibility="Hidden">
+        <Grid x:Name="deluser" Visibility="Visible" Margin="188,52,170,80" Height="289" >
+            <DataGrid x:Name="radio" Margin="10,10,297,10" Background="#00F0FFFF" Visibility="Visible">
 
             </DataGrid>
-            <Label x:Name="loguser" Content="Delete User" HorizontalAlignment="Left" Height="30" Margin="213,365,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
-            <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Height="28" Margin="601,311,0,0" VerticalAlignment="Top" Width="92" Click="Button7_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-            <TextBox x:Name="userdel" HorizontalAlignment="Left" Height="28" Margin="447,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Button x:Name="delete" HorizontalAlignment="Left" Height="28" Margin="423,251,0,0" VerticalAlignment="Top" Width="92" Click="Button7_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="AccountRemove" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Button>
+            <TextBox x:Name="userdel" HorizontalAlignment="Left" Height="28" Margin="258,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         </Grid>
-        <Button x:Name="addprogram" Content="Add program" HorizontalAlignment="Left" Height="29" Margin="435,11,0,0" VerticalAlignment="Top" Width="117" Click="Button9_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Hidden"/>
-        <Grid x:Name="addprog" Margin="188,52,170,83" Visibility="Hidden">
+        <Button x:Name="addprogram" HorizontalAlignment="Left" Height="29" Margin="435,11,0,0" VerticalAlignment="Top" Width="117" Click="Button9_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Hidden">
+            <materialDesign:PackIcon Kind="PlaylistAdd" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+        <Grid x:Name="addprog" Margin="188,52,170,83" Visibility="Hidden" Height="289">
             <Grid.Background>
-                <ImageBrush ImageSource="BACK.jpg" Opacity="0.6"/>
+                <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
             </Grid.Background>
-            <Label Content="Name Station" Height="30" Width="100" Margin="0,14,189,243" FontSize="13" HorizontalAlignment="Right"/>
+            <Label Content="Name Station" Height="30" Width="100" Margin="0,14,189,243" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="namestation" HorizontalAlignment="Left" Height="28" Margin="340,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Name Program" Height="30" Width="109" Margin="0,48,180,209" FontSize="13" HorizontalAlignment="Right"/>
+            <Label Content="Name Program" Width="109" Margin="0,48,180,203" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="nameprogram" HorizontalAlignment="Left" Height="28" Margin="340,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Period" Height="30" Width="70" Margin="0,83,168,174" FontSize="13" HorizontalAlignment="Right"/>
+            <Label Content="Period" Width="70" Margin="0,83,168,169" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="period" HorizontalAlignment="Left" Height="28" Margin="340,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Hour begin" Height="30" Margin="0,117,168,140" FontSize="13" HorizontalAlignment="Right" Width="96"/>
+            <Label Content="Hour begin" Height="30" Margin="0,117,168,140" FontSize="13" HorizontalAlignment="Right" Width="96" VerticalAlignment="Center"/>
             <TextBox x:Name="hourbegin" HorizontalAlignment="Left" Height="28" Margin="340,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Hour end" Height="30" Width="65" Margin="0,152,188,105" FontSize="13" HorizontalAlignment="Right"/>
+            <Label Content="Hour end" Height="30" Width="65" Margin="0,152,188,105" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="hourend" HorizontalAlignment="Left" Height="28" Margin="340,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Button Content="Add" HorizontalAlignment="Left" Height="29" Margin="410,215,0,0" VerticalAlignment="Top" Width="85" Click="Button10_Click" Background="#FF0064A0" BorderBrush="#FF005064" RenderTransformOrigin="0.506,0.552"/>
+            <Button HorizontalAlignment="Left" Height="29" Margin="410,215,0,0" VerticalAlignment="Top" Width="85" Click="Button10_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
         </Grid>
         <TextBox x:Name="namefav" HorizontalAlignment="Left" Height="33" Margin="26,363,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Foreground="White" FontSize="16"/>
-        <Button Content="Add to favorites" HorizontalAlignment="Left" Height="29" Margin="190,365,0,0" VerticalAlignment="Top" Width="142" Click="Button13_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button HorizontalAlignment="Left" Height="29" Margin="190,365,0,0" VerticalAlignment="Top" Width="100" Click="Button13_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="AddCircle" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
         <DataGrid x:Name="ratings" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="180" Margin="703,79,0,0" Background="#00FAFAFA" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" VerticalGridLinesBrush="#00000000" HorizontalGridLinesBrush="#00DEDEDE" HeadersVisibility="None"/>
         <Label Content="Ratings" HorizontalAlignment="Left" Height="34" Margin="760,45,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.5,0.5" FontSize="17"/>
-        <Button Content="Favorites" HorizontalAlignment="Left" Height="29" Margin="189,11,0,0" VerticalAlignment="Top" Width="119" Click="Button14_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Grid x:Name="favorites" Margin="188,52,170,80" Visibility="Hidden">
+        <Button HorizontalAlignment="Left" Height="30" Margin="189,11,0,0" VerticalAlignment="Top" Width="119" Click="Button14_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Button>
+        <Grid x:Name="favorites" Margin="188,52,170,80" Visibility="Hidden" Height="289">
             <Grid.Background>
-                <ImageBrush ImageSource="BACK.jpg" Opacity="0.6"/>
+                <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
             </Grid.Background>
             <DataGrid x:Name="favorit" Margin="10,33,358,11" Background="#00F0FFFF" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Foreground="#DDFFFFFF" FontSize="14">
 
             </DataGrid>
-            <Button Content="Delete favorite" HorizontalAlignment="Left" Height="29" Margin="359,237,0,0" VerticalAlignment="Top" Width="142" Click="Button15_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-            <TextBox x:Name="namefavor" HorizontalAlignment="Left" Height="33" Margin="190,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Foreground="White" FontSize="16"/>
+            <Button HorizontalAlignment="Left" Height="33" Margin="367,237,0,0" VerticalAlignment="Top" Width="100" Click="Button15_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="DeleteEmpty" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <TextBox x:Name="namefavor" HorizontalAlignment="Left" Height="33" Margin="209,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Foreground="White" FontSize="16"/>
             <Label Content="Favorites" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="80" Foreground="#DDFFFFFF" FontSize="14"/>
 
         </Grid>

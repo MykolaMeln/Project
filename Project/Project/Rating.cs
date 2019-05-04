@@ -12,7 +12,7 @@ namespace Project
     {
         public void Update(string name)
         {
-            string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True";
+            string connectionString = @"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand("UPDATE Radio_Stations SET Rating+=@rat WHERE Name_Station=@name",conn);
             conn.Open();

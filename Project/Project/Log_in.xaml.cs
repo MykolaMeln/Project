@@ -20,7 +20,7 @@ namespace Project
     /// </summary>
     public partial class Log_in : Window//вхід
     {
-        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS1; Initial Catalog=project;Integrated Security=True";
         public Log_in()
         {
             InitializeComponent();
@@ -32,11 +32,11 @@ namespace Project
             {
                 int count = 0;
 
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Login=@par1 AND Password=@par2", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Login=@log AND Password=@pas", conn))
                 {
                     if (login.Text.Length != 0)
                     {
-                        cmd.Parameters.AddWithValue("@par1", login.Text);
+                        cmd.Parameters.AddWithValue("@log", login.Text);
                     }
                     else
                     {
@@ -44,7 +44,7 @@ namespace Project
                     }
                     if (password.Password.ToString().Length != 0)
                     {
-                        cmd.Parameters.AddWithValue("@par2", password.Password.ToString());
+                        cmd.Parameters.AddWithValue("@pas", password.Password.ToString());
                     }
                     else
                     {
@@ -68,7 +68,6 @@ namespace Project
         }
         public void Admin(string log, string pass)
         {
-
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             SqlDataReader da = new SqlCommand("SELECT Login, Password, Admin FROM Users", conn).ExecuteReader();
@@ -107,9 +106,9 @@ namespace Project
         }
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-                MainWindow mw = new MainWindow();
-                mw.Show();
-               this.Close();
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)

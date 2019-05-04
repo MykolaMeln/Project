@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Project.Log_in"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,9 +9,9 @@
       WindowStartupLocation="CenterScreen"
         Title="Log in"  Height="383" Width="499.333" ResizeMode="NoResize">
     <Window.Background>
-        <ImageBrush ImageSource="BACK.jpg"/>
+        <ImageBrush ImageSource="Resources/BACK.jpg"/>
     </Window.Background>
-    <Grid>
+    <Grid Margin="0,-1,0,1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -19,8 +20,18 @@
         <TextBox x:Name="login" HorizontalAlignment="Left" Height="28" Margin="332,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" CaretBrush="#FF2247C5"/>
         <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="332,140,0,0" VerticalAlignment="Top" Height="28" Width="140" CaretBrush="#FF2247C5" Foreground="Black"/>
         <Label Content="Log in" HorizontalAlignment="Left" Margin="258,34,0,0" VerticalAlignment="Top" Height="34" Width="67" Cursor="None" Foreground="#DD0C248F" FontSize="20" FontFamily="Calibri Light"/>
-        <Button x:Name="enter" Content="Enter" HorizontalAlignment="Left" Height="30" Margin="387,200,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Button x:Name="registration" Content="Registration" HorizontalAlignment="Left" Height="30" Margin="258,200,0,0" VerticalAlignment="Top" Width="110" Click="Button1_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
-        <Button x:Name="close" Content="Close" HorizontalAlignment="Left" Height="30" Margin="387,291,0,0" VerticalAlignment="Top" Width="79" Click="Button2_Click" Background="#FF0064A0" BorderBrush="#FF005064"/>
+        <Button x:Name="enter" HorizontalAlignment="Left" Height="33" Margin="387,200,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="Login" Height="30" Width="34" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+        <Button x:Name="registration" HorizontalAlignment="Left" Height="33" Margin="287,200,0,0" VerticalAlignment="Top" Width="79" Click="Button1_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="Register" Width="34" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"/>
+        </Button>
+
+        <Button x:Name="close" HorizontalAlignment="Left" Height="37" Margin="419,303,0,0" VerticalAlignment="Top" Width="59" Click="Button2_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.3" ShadowDepth="6"/>
+            </Button.Effect>
+            <materialDesign:PackIcon Kind="ExitRun" Width="34" Height="30" Foreground="#FF00042D" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Button>
     </Grid>
 </Window>

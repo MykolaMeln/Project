@@ -22,7 +22,7 @@ namespace Project
     /// </summary>
     public partial class Menu : Window//основне меню
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
         public Menu()
         {
             InitializeComponent();
@@ -68,7 +68,6 @@ namespace Project
 
             }
             conn.Close();
-
         }
         private void Rating(string name)
         {
@@ -103,7 +102,7 @@ namespace Project
             Rating(name.Content.ToString());
             StaticRating();
         }
-        private void Button3_Click(object sender, RoutedEventArgs e)
+        private void Button3_Click(object sender, RoutedEventArgs e)//
         {
             name.Content = radio3.Content;
             Programs();
@@ -111,7 +110,7 @@ namespace Project
             Rating(name.Content.ToString());
             StaticRating();
         }
-        private void Button4_Click(object sender, RoutedEventArgs e)
+        private void Button4_Click(object sender, RoutedEventArgs e)//
         {
             name.Content = radio4.Content;
             Programs();
@@ -120,7 +119,7 @@ namespace Project
             StaticRating();
         }
 
-        private void Button11_Click(object sender, RoutedEventArgs e)
+        private void Button11_Click(object sender, RoutedEventArgs e)//
         {
             name.Content = radio5.Content;
             Programs();
@@ -129,7 +128,7 @@ namespace Project
             StaticRating();
         }
 
-        private void Button12_Click(object sender, RoutedEventArgs e)
+        private void Button12_Click(object sender, RoutedEventArgs e)//
         {
             name.Content = radio6.Content;
             Programs();
@@ -277,8 +276,7 @@ namespace Project
                 MessageBox.Show("Please Try Again");
                 return;
             }
-            ShowFavorite(); 
-            
+            ShowFavorite();
         }
     }
 }

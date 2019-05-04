@@ -23,11 +23,10 @@ namespace Project
     /// </summary>
     public partial class MainWindow : Window//реєстрація
     { 
-        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=project;Integrated Security=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True";
         public MainWindow()
         {
             InitializeComponent();
-
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -74,17 +73,16 @@ namespace Project
                 {
                     MessageBox.Show("Login and Password is NULL");
                 }
-            }         
-                Menu menu = new Menu();
-                menu.loginlabel.Content = login.Text;
-                menu.Show();
-            this.Close();       
+            }
+            Menu menu = new Menu();
+            menu.loginlabel.Content = login.Text;
+            menu.Show();
+            this.Close();
         }
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
             var w2 = new Log_in();

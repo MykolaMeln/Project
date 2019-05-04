@@ -32,7 +32,6 @@ C:\Users\Ноут\Desktop\Project\Project\Project\bin\Debug\MaterialDesignThemes
 C:\Users\Ноут\Desktop\Project\Project\Project\bin\Debug\MaterialDesignColors.pdb
 C:\Users\Ноут\Desktop\Project\Project\Project\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Ноут\Desktop\Project\Project\Project\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
 C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\Log_in.g.cs
 C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\MainWindow.g.cs
 C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\Menu.g.cs

@@ -9,5 +9,6 @@ namespace Project
     interface IFavorites
     {
         void AddFavorite();
+        void DeleteFavorite();
     }
 }
