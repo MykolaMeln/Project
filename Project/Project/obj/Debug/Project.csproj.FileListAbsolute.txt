@@ -101,3 +101,4 @@ F:\Project\Project\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.ca
 F:\Project\Project\Project\Project\obj\Debug\Project.csproj.CopyComplete
 F:\Project\Project\Project\Project\obj\Debug\Project.exe
 F:\Project\Project\Project\Project\obj\Debug\Project.pdb
+C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache

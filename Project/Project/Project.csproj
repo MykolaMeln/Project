@@ -127,5 +127,23 @@
   <ItemGroup>
     <Resource Include="Resources\BACK.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pepper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bukovyna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\starlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\energy.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

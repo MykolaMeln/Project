@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Windows.Media.Animation;
 
 namespace Project
 {
@@ -89,6 +89,9 @@ namespace Project
         private void Button1_Click(object sender, RoutedEventArgs e)//Radiopepper
         {
             name.Content = radio1.Content;
+            logo.Stroke = Brushes.Red;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/pepper.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -97,40 +100,55 @@ namespace Project
         private void Button2_Click(object sender, RoutedEventArgs e)//Bukovyna
         {
             name.Content = radio2.Content;
+            logo.Stroke = Brushes.Black;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/bukovyna.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
             StaticRating();
         }
-        private void Button3_Click(object sender, RoutedEventArgs e)//
+        private void Button3_Click(object sender, RoutedEventArgs e)//Starlight
         {
             name.Content = radio3.Content;
+            logo.Stroke = Brushes.Black;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/starlight.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
             StaticRating();
         }
-        private void Button4_Click(object sender, RoutedEventArgs e)//
+        private void Button4_Click(object sender, RoutedEventArgs e)//RadioRock
         {
             name.Content = radio4.Content;
+            logo.Stroke = Brushes.Red;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/rock.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
             StaticRating();
         }
 
-        private void Button11_Click(object sender, RoutedEventArgs e)//
+        private void Button11_Click(object sender, RoutedEventArgs e)//UARadio
         {
             name.Content = radio5.Content;
+            logo.Stroke = Brushes.Blue;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/ua.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
             StaticRating();
         }
 
-        private void Button12_Click(object sender, RoutedEventArgs e)//
+        private void Button12_Click(object sender, RoutedEventArgs e)//Energy
         {
             name.Content = radio6.Content;
+            logo.Stroke = Brushes.Orange;
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/energy.png"));
+            CloseRadio();
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -277,6 +295,44 @@ namespace Project
                 return;
             }
             ShowFavorite();
+        }
+        private void CloseRadio()
+        {
+            if (radiost.Height == 360)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 360;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.2);
+                radiost.BeginAnimation(Button.HeightProperty, doubleanimation);
+                down.Visibility = Visibility.Visible;
+            }
+        }
+        private void ShowRadio()
+        {
+            if(radiost.Height == 0)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 0;
+                doubleanimation.To = 360;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.2);
+                radiost.BeginAnimation(Button.HeightProperty, doubleanimation);
+                down.Visibility = Visibility.Hidden;
+            }
+        }
+        private void settings_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void listradio_Click(object sender, RoutedEventArgs e)
+        {
+            CloseRadio();
+        }
+
+        private void downradio_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRadio();
         }
     }
 }
