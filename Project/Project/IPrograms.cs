@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Program//програми радіо
+    interface IPrograms
     {
-
+        void AddProgram(Program program);
+        void DeleteProgram(Program program);
     }
 }

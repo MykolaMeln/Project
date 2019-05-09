@@ -23,10 +23,94 @@ namespace Project
     public partial class Menu : Window//основне меню
     {
         SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
+        public Favorites favoritess;
+        public Programs programs;
+        public Comments commentss;       
         public Menu()
         {
             InitializeComponent();
             StaticRating();
+            programs = new Programs();
+            LoadPrograms();
+            favoritess = new Favorites();
+            LoadFavorites();
+            commentss = new Comments();
+            LoadComments();
+            LoadInBlock();
+        }
+        private void LoadPrograms()
+        {
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Programs ", conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Programs");
+            DataTable t;
+            t = ds.Tables["Programs"];
+            Program program;
+            foreach (DataRow row in t.Rows)
+            {
+                program = new Program(row[0].ToString(),row[1].ToString(),row[2].ToString(),row[3].ToString(),row[4].ToString());
+                programs.AddProgram(program);
+            }     
+            conn.Close();
+        }
+        private void LoadFavorites()
+        {
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Favorites Where ID_User='" + loginlabel.Content.ToString() + "'", conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Favorites");
+            DataTable t;
+            t = ds.Tables["Favorites"];
+            Favorite favorite;
+            foreach (DataRow row in t.Rows)
+            {
+                favorite = new Favorite(row[0].ToString(), row[1].ToString());
+                favoritess.AddFavorite(favorite);
+            }
+            conn.Close();
+        }
+        private void LoadComments()
+        {
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Comments", conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Comments");
+            DataTable t;
+            t = ds.Tables["Comments"];
+            Comment comment;
+            foreach (DataRow row in t.Rows)
+            {
+                comment = new Comment(row[0].ToString(), row[1].ToString(), Convert.ToDateTime(row[2]));
+                commentss.AddComment(comment);
+            }
+            conn.Close();
+        }
+        private void LoadInBlock()
+        {
+            int k = 1;
+            string MyText = "";
+            foreach(Comment com in commentss.comments)
+            {
+                MyText += k.ToString() + ". " + com.user + ": " + com.comment + " " + com.date.ToString() + "\n";
+                k++;
+            }
+        }
+        private void IsFavorite(string namestation)
+        {
+            foreach(Favorite fav in favoritess.favorites)
+            {
+                if(fav.Station == namestation)
+                {
+                    addfav.Visibility = Visibility.Hidden;
+                    delfav.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    addfav.Visibility = Visibility.Visible;
+                    delfav.Visibility = Visibility.Hidden;
+                }
+            }
         }
         private void Programs()
         {
@@ -49,7 +133,6 @@ namespace Project
             rozklad.IsReadOnly = true;
             addprog.Visibility = Visibility.Hidden;
             deluser.Visibility = Visibility.Hidden;
-            favorites.Visibility = Visibility.Hidden;
         }
         private void Chastota()
         {
@@ -90,8 +173,9 @@ namespace Project
         {
             name.Content = radio1.Content;
             logo.Stroke = Brushes.Red;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/pepper.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/pepper.png"));
             CloseRadio();
+            IsFavorite(radio1.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -101,8 +185,9 @@ namespace Project
         {
             name.Content = radio2.Content;
             logo.Stroke = Brushes.Black;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/bukovyna.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/bukovyna.png"));
             CloseRadio();
+            IsFavorite(radio2.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -112,8 +197,9 @@ namespace Project
         {
             name.Content = radio3.Content;
             logo.Stroke = Brushes.Black;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/starlight.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/starlight.png"));
             CloseRadio();
+            IsFavorite(radio3.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -123,8 +209,9 @@ namespace Project
         {
             name.Content = radio4.Content;
             logo.Stroke = Brushes.Red;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/rock.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/rock.png"));
             CloseRadio();
+            IsFavorite(radio4.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -135,8 +222,9 @@ namespace Project
         {
             name.Content = radio5.Content;
             logo.Stroke = Brushes.Blue;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/ua.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/ua.png"));
             CloseRadio();
+            IsFavorite(radio5.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -147,8 +235,9 @@ namespace Project
         {
             name.Content = radio6.Content;
             logo.Stroke = Brushes.Orange;
-            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"Resources/energy.png"));
+            logoradio.ImageSource = BitmapFrame.Create(new Uri(@"pack://application:,,,/Project;component/Resources/energy.png"));
             CloseRadio();
+            IsFavorite(radio6.Content.ToString());
             Programs();
             Chastota();
             Rating(name.Content.ToString());
@@ -181,8 +270,8 @@ namespace Project
                 da.Fill(ds, "Users");
                 DataTable t;
                 t = ds.Tables["Users"];
-                radio.ItemsSource = t.DefaultView;
-                radio.IsReadOnly = true;
+                userss.ItemsSource = t.DefaultView;
+                userss.IsReadOnly = true;
                 conn.Close();
                 userdel.Text = "";
             }
@@ -192,43 +281,52 @@ namespace Project
 
         private void Button8_Click(object sender, RoutedEventArgs e)
         {
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Users", conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds, "Users");
-            DataTable t;
-            t = ds.Tables["Users"];
-            radio.ItemsSource = t.DefaultView;
-            conn.Close();
-            radio.Visibility = Visibility.Visible;
-            radio.IsReadOnly = true;
-            deluser.Visibility = Visibility.Visible;
-            radioinfo.Visibility = Visibility.Hidden;
-            addprog.Visibility = Visibility.Hidden;
-            favorites.Visibility = Visibility.Hidden; ;
+            if (deluser.Visibility == Visibility.Hidden)
+            {
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Users", conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Users");
+                DataTable t;
+                t = ds.Tables["Users"];
+                userss.ItemsSource = t.DefaultView;
+                conn.Close();
+                userss.Visibility = Visibility.Visible;
+                userss.IsReadOnly = true;
+                deluser.Visibility = Visibility.Visible;
+                radioinfo.Visibility = Visibility.Hidden;
+                addprog.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                deluser.Visibility = Visibility.Hidden;
+                addprog.Visibility = Visibility.Hidden;
+                radioinfo.Visibility = Visibility.Visible;
+            }
         }
 
         private void Button9_Click(object sender, RoutedEventArgs e)
         {
-            radioinfo.Visibility = Visibility.Hidden;
-            favorites.Visibility = Visibility.Hidden;
-            deluser.Visibility = Visibility.Hidden;
-            addprog.Visibility = Visibility.Visible;
+            if (addprog.Visibility == Visibility.Hidden)
+            {
+                radioinfo.Visibility = Visibility.Hidden;
+                deluser.Visibility = Visibility.Hidden;
+                addprog.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                addprog.Visibility = Visibility.Hidden;
+                deluser.Visibility = Visibility.Hidden;
+                radioinfo.Visibility = Visibility.Visible;
+            }
         }
 
         private void Button10_Click(object sender, RoutedEventArgs e)
         {
             if ((namestation.Text!="")&&(nameprogram.Text!="")&&(period.Text!="")&&(hourbegin.Text!="")&&(hourend.Text!=""))
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO Programs(ID_Station,Name_Program,Period,Hour_Begin,Hour_End) VALUES(@namer,@namep,@per,@hourb,@houre)", conn);
-                conn.Open();
-                cmd.Parameters.AddWithValue("@namer", namestation.Text);
-                cmd.Parameters.AddWithValue("@namep", nameprogram.Text);
-                cmd.Parameters.AddWithValue("@per", period.Text);
-                cmd.Parameters.AddWithValue("@hourb", hourbegin.Text);
-                cmd.Parameters.AddWithValue("@houre", hourend.Text);
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                Program p = new Program(namestation.Text, nameprogram.Text, period.Text, hourbegin.Text, hourend.Text);
+                programs.AddProgram(p);
                 MessageBox.Show("Record Inserted Successfully");
             }
             else
@@ -241,23 +339,7 @@ namespace Project
             period.Text = "";
             hourbegin.Text = "";
             hourend.Text = "";
-        }
-
-        private void Button13_Click(object sender, RoutedEventArgs e)
-        {
-            if (namefav.Text != "")
-            {
-                Favorites fav = new Favorites(loginlabel.Content.ToString(), namefav.Text);
-                fav.AddFavorite();
-                MessageBox.Show("Record Added Successfully");
-                namefav.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Please Try Again");
-                return;
-            }       
-        }
+        }   
         public void ShowFavorite()
         {
             conn.Open();
@@ -270,40 +352,66 @@ namespace Project
             favorit.IsReadOnly = true;
             conn.Close();
         }
-        private void Button14_Click(object sender, RoutedEventArgs e)
+        private void CloseFav()
         {
-            favorites.Visibility = Visibility.Visible;
-            addprog.Visibility = Visibility.Hidden;
-            deluser.Visibility = Visibility.Hidden;
-            radio.Visibility = Visibility.Hidden;
-            radioinfo.Visibility = Visibility.Hidden;
-            ShowFavorite();
-        }
-
-        private void Button15_Click(object sender, RoutedEventArgs e)
-        {
-            if (namefavor.Text != "")
+            if (favorites.Height == 0)
             {
-                Favorites fav = new Favorites(loginlabel.Content.ToString(), namefavor.Text);
-                fav.DeleteFavorite();
-                MessageBox.Show(namefavor.Text + " Deleted");
-                namefavor.Text = "";
+                favorites.Visibility = Visibility.Visible;
+                ShowFavorite();
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 0;
+                doubleanimation.To = 295;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                showfav.BeginAnimation(Button.HeightProperty, doubleanimation);
             }
             else
+              if (favorites.Height == 295)
             {
-                MessageBox.Show("Please Try Again");
-                return;
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 295;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                showfav.BeginAnimation(Button.HeightProperty, doubleanimation);
+                favorites.Visibility = Visibility.Hidden;
+                radioinfo.Visibility = Visibility.Visible;
             }
-            ShowFavorite();
+        }
+        private void showfav_Click(object sender, RoutedEventArgs e)
+        {
+            CloseFav();
+            addprog.Visibility = Visibility.Hidden;
+            deluser.Visibility = Visibility.Hidden;
+            userss.Visibility = Visibility.Hidden;
+        }
+        private void closefav_Click(object sender, RoutedEventArgs e)
+        {
+            CloseFav();
+            addprog.Visibility = Visibility.Hidden;
+            deluser.Visibility = Visibility.Hidden;
+            userss.Visibility = Visibility.Hidden;
+        }
+        private void Button13_Click(object sender, RoutedEventArgs e)
+        {
+            Favorite fav = new Favorite(loginlabel.Content.ToString(), name.Content.ToString());
+            MessageBox.Show(favoritess.AddFavorite(fav));
+            addfav.Visibility = Visibility.Hidden;
+            delfav.Visibility = Visibility.Visible;
+        }
+        private void Button15_Click(object sender, RoutedEventArgs e)
+        {
+            Favorite fav = new Favorite(loginlabel.Content.ToString(), name.Content.ToString());
+            favoritess.DeleteFavorite(fav);
+            addfav.Visibility = Visibility.Visible;
+            delfav.Visibility = Visibility.Hidden;
         }
         private void CloseRadio()
         {
             if (radiost.Height == 360)
-            {
+            {        
                 DoubleAnimation doubleanimation = new DoubleAnimation();
                 doubleanimation.From = 360;
                 doubleanimation.To = 0;
-                doubleanimation.Duration = TimeSpan.FromSeconds(0.2);
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
                 radiost.BeginAnimation(Button.HeightProperty, doubleanimation);
                 down.Visibility = Visibility.Visible;
             }
@@ -312,17 +420,17 @@ namespace Project
         {
             if(radiost.Height == 0)
             {
+                radiost.Visibility = Visibility.Visible;
                 DoubleAnimation doubleanimation = new DoubleAnimation();
                 doubleanimation.From = 0;
                 doubleanimation.To = 360;
-                doubleanimation.Duration = TimeSpan.FromSeconds(0.2);
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
                 radiost.BeginAnimation(Button.HeightProperty, doubleanimation);
-                down.Visibility = Visibility.Hidden;
             }
         }
         private void settings_Click(object sender, RoutedEventArgs e)
         {
-           
+            ShowSet();
         }
 
         private void listradio_Click(object sender, RoutedEventArgs e)
@@ -333,6 +441,155 @@ namespace Project
         private void downradio_Click(object sender, RoutedEventArgs e)
         {
             ShowRadio();
+            down.Visibility = Visibility.Hidden;
         }
+        private void CloseSet()
+        {
+            if (setting.Width == 250)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 250;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                setting.BeginAnimation(Button.WidthProperty, doubleanimation);
+            }
+        }
+        private void ShowSet()
+        {
+            if (setting.Width == 0)
+            {
+                setting.Visibility = Visibility.Visible;
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 0;
+                doubleanimation.To = 250;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                setting.BeginAnimation(Button.WidthProperty, doubleanimation);
+            }
+            else
+                if (setting.Width == 250)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 250;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                setting.BeginAnimation(Button.WidthProperty, doubleanimation);
+                setting.Visibility = Visibility.Hidden;
+            }
+        }
+        private void Closeset_Click(object sender, RoutedEventArgs e)
+        {
+            CloseSet();
+            pass1.Password = "";
+            pass2.Password = "";
+            pass3.Password = "";
+            pass4.Password = "";
+        }
+
+        private void Accept_Click(object sender, RoutedEventArgs e)
+        {        
+            if (pass4.Password.ToString().Length != 0)
+            {
+                if (pass4.Password.ToString().CompareTo(passlabel.Content) == 0)
+                {
+                    string del = "DELETE FROM Users WHERE Login=@log And Password=@pas";
+                    conn.Open();
+                    SqlCommand command = new SqlCommand(del, conn);
+                    command.Parameters.AddWithValue("@log", loginlabel.Content);
+                    command.Parameters.AddWithValue("@pas", pass4.Password.ToString());
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Thanks. Your account is deleted.");
+                    pass4.Password = "";
+                    MainWindow log = new MainWindow();
+                    log.Show();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Wrong password");
+            }
+            else
+                MessageBox.Show("Length of password is null");
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            pass4.Password = "";
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if ((pass1.Password.ToString().Length != 0) && (pass2.Password.ToString().Length != 0) && (pass3.Password.ToString().Length != 0))
+            {
+                if (pass1.Password.ToString().CompareTo(passlabel.Content) == 0 && (pass2.Password.ToString().CompareTo(pass3.Password.ToString()) == 0))
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE Users SET Password = @pas WHERE Login=@log", conn);
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@log", loginlabel.Content);
+                    cmd.Parameters.AddWithValue("@pas", pass3.Password.ToString());
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Password is changed. New password " + pass3.Password.ToString());
+                    pass1.Password = "";
+                    pass2.Password = "";
+                    pass3.Password = "";
+                }
+                else
+                MessageBox.Show("Wrong password or wrong confirm");
+            }
+            else
+                MessageBox.Show("Length of password is null");
+        }
+
+        private void comment_Click(object sender, RoutedEventArgs e)
+        {
+            string BoldText, CommentText;
+            DateTime ItalicText;
+            if (comment.Text != "")
+            {
+                BoldText = loginlabel.Content.ToString();
+                ItalicText = DateTime.Now.Date.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute);
+                CommentText = comment.Text;
+                Comment commentt = new Comment(BoldText, CommentText, ItalicText);
+                commentss.AddComment(commentt);
+                comment.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Comment length is null!");
+            }
+            LoadInBlock();
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            int index = rozklad.SelectedIndex;
+
+            if (index != -1)
+            {
+                int k = 0;
+                foreach (Program p in programs.programs)
+                {
+                    if (p.Id_Station == name.Content.ToString())
+                    {
+                        if(k==index)
+                        {
+                            programs.DeleteProgram(p);
+                            Programs();
+                        }
+                        else
+                            k++;
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select one row!");
+            }
+        }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }       
     }
 }

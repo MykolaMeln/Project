@@ -13,7 +13,6 @@ namespace Project
         public void AddUser(User user)//додавання користувача в список
         {
             users.Add(user);
-        }
-
+        }   
     }
 }

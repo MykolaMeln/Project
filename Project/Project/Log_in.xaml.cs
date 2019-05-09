@@ -83,6 +83,7 @@ namespace Project
                 {
                     Menu win1 = new Menu();
                     win1.loginlabel.Content = login.Text;
+                    win1.passlabel.Content = password.Password.ToString();                   
                     win1.users.Visibility = Visibility.Visible;
                     win1.radioinfo.Visibility = Visibility.Visible;
                     win1.chastota.Visibility = Visibility.Hidden;
@@ -96,6 +97,7 @@ namespace Project
                 {
                     Menu win1 = new Menu();
                     win1.loginlabel.Content = login.Text;
+                    win1.passlabel.Content = password.Password.ToString();
                     win1.deluser.Visibility = Visibility.Hidden;
                     win1.users.Visibility = Visibility.Hidden;
                     win1.radioinfo.Visibility = Visibility.Visible;

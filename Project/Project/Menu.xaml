@@ -7,10 +7,10 @@
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
      WindowStartupLocation="CenterScreen"
-        Title="Menu" Height="461" Width="894" ResizeMode="NoResize">
+        Title="Menu" Height="526" Width="894" ResizeMode="NoResize">
     <Grid Background="#FF3A538D">
-        <Label x:Name="loginlabel" Content="Log in pleace!" HorizontalAlignment="Left" Height="36" Margin="506,8,0,0" VerticalAlignment="Top" Width="122" FontSize="18"/>
-        <StackPanel x:Name="radiost" Panel.ZIndex="1" Height="360" Width="176" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF0064A0" Margin="6,6,0,0" Visibility="Visible">
+        <Label x:Name="loginlabel" Content="login" HorizontalAlignment="Left" Height="36" Margin="506,8,0,0" VerticalAlignment="Top" Width="83" FontSize="18"/>
+        <StackPanel x:Name="radiost" Panel.ZIndex="1" Height="0" Width="176" FlowDirection="RightToLeft" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF0064A0" Margin="6,6,0,0" Visibility="Hidden">
             <StackPanel.Effect>
                 <DropShadowEffect BlurRadius="9" ShadowDepth="2"/>
             </StackPanel.Effect>
@@ -25,7 +25,7 @@
                 <materialDesign:PackIcon Kind="ArrowUp" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
         </StackPanel>
-        <Button x:Name="close" HorizontalAlignment="Left" Height="46" Margin="806,362,0,0" Opacity="100" VerticalAlignment="Top" Width="66" Click="Button5_Click" Background="#FF3A538D" BorderBrush="#FF005064">
+        <Button x:Name="close" HorizontalAlignment="Left" Height="46" Margin="785,419,0,0" Opacity="100" VerticalAlignment="Top" Width="66" Click="Button5_Click" Background="#FF3A538D" BorderBrush="#FF005064">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="3" Opacity="0.3" ShadowDepth="6"/>
             </Button.Effect>
@@ -37,22 +37,35 @@
         <Button x:Name="users" HorizontalAlignment="Left" Height="30" Margin="295,11,0,0" VerticalAlignment="Top" Width="101" Click="Button8_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Visible">
             <materialDesign:PackIcon Kind="Accounts" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-        <Grid x:Name="radioinfo" Margin="42,52,182,91" Visibility="Visible">
+        <Grid x:Name="radioinfo" Margin="42,52,182,149" Visibility="Visible" Opacity="100">
             <Grid.Background>
                 <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
             </Grid.Background>
-            <Ellipse x:Name="logo" Height="100" Width="100" Margin="10,10,554,179" HorizontalAlignment="Left" VerticalAlignment="Top" StrokeThickness="3" Stroke="#000">
+            <Ellipse x:Name="logo" Height="103" Width="102" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" StrokeThickness="3" Stroke="#000">
                 <Ellipse.Fill>
                     <ImageBrush x:Name="logoradio" ImageSource="Resources/BACK.jpg" TileMode="Tile"/>
                 </Ellipse.Fill>
             </Ellipse>
             <Label x:Name="name" Content="Change Radio" HorizontalAlignment="Left" Height="30" Margin="10,112,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
-            <Label x:Name="chast" Content="Chastota" Margin="11,139,539,125"/>
-            <Label x:Name="chastota" Content="120 Ghz" Margin="75,139,528,125" FontWeight="Bold"/>
-            <DataGrid x:Name="rozklad" HorizontalAlignment="Left" Height="269" Margin="131,10,0,0" VerticalAlignment="Top" Width="523" Background="#00000000" Foreground="#DDFDFDFD" CanUserResizeColumns="False"/>
+            <Label x:Name="chast" Content="Chastota" Margin="11,135,539,111"/>
+            <Label x:Name="chastota" Content="120 Ghz" Margin="71,135,532,111" FontWeight="Bold"/>
+            <DataGrid x:Name="rozklad" HorizontalAlignment="Left" Height="265" Margin="141,10,0,0" VerticalAlignment="Top" Width="512" Background="#00000000" Foreground="#DDFDFDFD" CanUserResizeColumns="False"/>
+            <Button x:Name="delfav" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="28,165,0,0" VerticalAlignment="Top" Width="65" Click="Button15_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
+                <materialDesign:PackIcon Kind="Favorite" HorizontalAlignment="Center" Height="30" Width="30" VerticalAlignment="Center" Background="Transparent"/>
+            </Button>
+            <Button x:Name="addfav" Visibility="Visible" HorizontalAlignment="Left" Height="30" Margin="28,165,0,0" VerticalAlignment="Top" Width="65" Click="Button13_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
+                <materialDesign:PackIcon Kind="FavoriteOutline" HorizontalAlignment="Center" Height="30" Width="30" VerticalAlignment="Center" Background="Transparent"/>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="26" Margin="76,253,0,0" VerticalAlignment="Top" Width="46" Click="edit_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="Edit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="26" Margin="11,253,0,0" VerticalAlignment="Top" Width="46" Click="delete_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="DeleteForever" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+
         </Grid>
-        <Grid x:Name="deluser" Visibility="Hidden" Margin="188,52,170,77" Grid.ColumnSpan="2" >
-            <DataGrid x:Name="radio" Margin="10,10,297,10" Background="#00F0FFFF" Visibility="Hidden">
+        <Grid x:Name="deluser" Visibility="Hidden" Margin="188,51,170,157" >
+            <DataGrid x:Name="userss" Margin="10,10,297,10" Background="#00F0FFFF" Visibility="Visible">
 
             </DataGrid>
             <Button x:Name="delete" HorizontalAlignment="Left" Height="28" Margin="423,251,0,0" VerticalAlignment="Top" Width="92" Click="Button7_Click" Background="#FF0064A0" BorderBrush="#FF005064">
@@ -60,85 +73,90 @@
             </Button>
             <TextBox x:Name="userdel" HorizontalAlignment="Left" Height="28" Margin="258,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         </Grid>
-        <Button x:Name="addprogram" HorizontalAlignment="Left" Height="30" Margin="401,12,0,0" VerticalAlignment="Top" Width="101" Click="Button9_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Visible">
+        <Button x:Name="addprogram" HorizontalAlignment="Left" Height="30" Margin="401,11,0,0" VerticalAlignment="Top" Width="101" Click="Button9_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Visible">
             <materialDesign:PackIcon Kind="PlaylistAdd" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-        <Grid x:Name="addprog" Margin="188,52,170,77" Visibility="Hidden" Grid.ColumnSpan="2">
+        <Grid x:Name="addprog" Margin="188,52,170,156" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
             </Grid.Background>
-            <Label Content="Name Station" Height="30" Width="100" Margin="0,14,189,243" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Content="Name Station" Height="34" Width="100" Margin="0,15,181,240" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="namestation" HorizontalAlignment="Left" Height="28" Margin="340,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Name Program" Width="109" Margin="0,48,180,203" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Content="Name Program" Width="109" Margin="0,49,181,205" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35"/>
             <TextBox x:Name="nameprogram" HorizontalAlignment="Left" Height="28" Margin="340,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Period" Width="70" Margin="0,83,168,169" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Content="Period" Width="70" Margin="0,85,169,174" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" RenderTransformOrigin="0.5,0.5"/>
+
             <TextBox x:Name="period" HorizontalAlignment="Left" Height="28" Margin="340,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Hour begin" Height="30" Margin="0,117,168,140" FontSize="13" HorizontalAlignment="Right" Width="96" VerticalAlignment="Center"/>
+            <Label Content="Hour begin" Height="35" Margin="0,119,169,135" FontSize="13" HorizontalAlignment="Right" Width="96" VerticalAlignment="Center"/>
             <TextBox x:Name="hourbegin" HorizontalAlignment="Left" Height="28" Margin="340,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-            <Label Content="Hour end" Height="30" Width="65" Margin="0,152,188,105" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Content="Hour end" Height="32" Width="65" Margin="0,154,190,103" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox x:Name="hourend" HorizontalAlignment="Left" Height="28" Margin="340,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
             <Button HorizontalAlignment="Left" Height="29" Margin="410,215,0,0" VerticalAlignment="Top" Width="85" Click="Button10_Click" Background="#FF0064A0" BorderBrush="#FF005064">
                 <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
         </Grid>
-        <TextBox x:Name="namefav" HorizontalAlignment="Left" Height="33" Margin="26,363,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Foreground="White" FontSize="16"/>
-        <Button HorizontalAlignment="Left" Height="29" Margin="190,365,0,0" VerticalAlignment="Top" Width="100" Click="Button13_Click" Background="#FF0064A0" BorderBrush="#FF005064">
-            <materialDesign:PackIcon Kind="AddCircle" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Button>
         <DataGrid x:Name="ratings" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="180" Margin="703,83,0,0" Background="#00FAFAFA" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" VerticalGridLinesBrush="#00000000" HorizontalGridLinesBrush="#00DEDEDE" HeadersVisibility="None"/>
         <Label Content="Ratings" HorizontalAlignment="Left" Height="34" Margin="770,44,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.5,0.5" FontSize="17"/>
-        <Button HorizontalAlignment="Left" Height="30" Margin="189,11,0,0" VerticalAlignment="Top" Width="101" Click="Button14_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+        <Button x:Name="showfav" HorizontalAlignment="Left" Height="30" Margin="189,11,0,0" VerticalAlignment="Top" Width="101" Click="showfav_Click" Background="#FF0064A0" BorderBrush="#FF005064">
             <materialDesign:PackIcon Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Button>
-        <Grid x:Name="favorites" Margin="188,52,170,77" Visibility="Hidden" Grid.ColumnSpan="2">
-            <Grid.Background>
-                <ImageBrush ImageSource="Resources/BACK.jpg" Opacity="0.6"/>
-            </Grid.Background>
-            <DataGrid x:Name="favorit" Margin="10,33,358,11" Background="#00F0FFFF" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Foreground="#DDFFFFFF" FontSize="14">
-
+        <Grid x:Name="favorites" Margin="189,52,449,149" Height="0" Width="250" Panel.ZIndex="1" Background="#FF0064A0" Visibility="Hidden">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="9" ShadowDepth="2"/>
+            </Grid.Effect>
+            <DataGrid x:Name="favorit" Margin="10,34,10,10" Background="#00F0FFFF" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Foreground="#DDFFFFFF" FontSize="14">
             </DataGrid>
-            <Button HorizontalAlignment="Left" Height="33" Margin="367,237,0,0" VerticalAlignment="Top" Width="100" Click="Button15_Click" Background="#FF0064A0" BorderBrush="#FF005064">
-                <materialDesign:PackIcon Kind="DeleteEmpty" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Favorites" HorizontalAlignment="Left" Margin="89,0,0,0" VerticalAlignment="Top" Height="33" Width="80" Foreground="#DDFFFFFF" FontSize="14"/>
+            <Button x:Name="closefav" Height="24" Width="40" Margin="204,5,6,266"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="closefav_Click">
+                <materialDesign:PackIcon Height="20" Width="20" Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
-            <TextBox x:Name="namefavor" HorizontalAlignment="Left" Height="33" Margin="209,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Foreground="White" FontSize="16"/>
-            <Label Content="Favorites" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="80" Foreground="#DDFFFFFF" FontSize="14"/>
-
         </Grid>
         <Button x:Name="settings" HorizontalAlignment="Left" Height="33" Margin="746,8,0,0" VerticalAlignment="Top" Width="60" Background="#FF0064A0" BorderBrush="#FF005064" Click="settings_Click">
             <materialDesign:PackIcon Kind="Settings" Width="34" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-        <Label x:Name="kredyts" Content="Kredyts" Height="30" Margin="622,12,0,0" VerticalAlignment="Top" Width="55" FontSize="14" HorizontalAlignment="Left" FontStyle="Italic" Grid.ColumnSpan="2"/>
-        <Label x:Name="kredyt" Content="Kredyt" HorizontalAlignment="Left" Height="29" Margin="677,13,0,0" VerticalAlignment="Top" Width="60" FontSize="14" BorderBrush="#FF43F50F" BorderThickness="1,0" Foreground="#DDFFFFFF"/>
-        <Grid Width="250" Background="#FF0064A0" Margin="628,52,10,77" Visibility="Visible">
+        <Label x:Name="kredyts" Content="Kredyts" Height="30" Margin="596,12,0,0" VerticalAlignment="Top" Width="55" FontSize="14" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <Label x:Name="kredyt" Content="Kredyt" HorizontalAlignment="Left" Height="29" Margin="658,13,0,0" VerticalAlignment="Top" Width="68" FontSize="14" BorderBrush="#FF43F50F" BorderThickness="1,0" Foreground="#DDFFFFFF"/>
+        <Grid x:Name="setting" Width="0" Panel.ZIndex="1" Background="#FF0064A0" Margin="628,53,10,116" Visibility="Hidden">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="9" ShadowDepth="2"/>
             </Grid.Effect>
-            <Label Margin="6,8,118,250" FontSize="14" FontWeight="Bold">Change password</Label>
-            <PasswordBox x:Name="pass1" HorizontalAlignment="Left"  Margin="111,39,0,227" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
-            <Label Height="33" Margin="5,45,139,216" FontSize="12" Content="Current password"/>
-            <PasswordBox x:Name="pass2" HorizontalAlignment="Left"  Margin="97,73,0,193" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
-            <Label  Height="33" Margin="5,79,153,180" FontSize="12"  Content="New Password"/>
-            <PasswordBox x:Name="pass3" HorizontalAlignment="Left" Margin="115,106,0,0" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
-            <Label  Height="33" Margin="5,111,133,148" FontSize="12"  Content="Confirm password"/>
-            <Button x:Name="closeset" Height="25" Width="40" Margin="200,6,10,258"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0">
+            <Label Width="130" Height="35" Margin="6,13,114,280" FontSize="14" FontWeight="Bold">Change password</Label>
+            <PasswordBox x:Name="pass1" HorizontalAlignment="Left"  Margin="111,51,0,0" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
+            <Label Height="33" Margin="6,55,138,240" FontSize="12" Content="Current password"/>
+            <PasswordBox x:Name="pass2" HorizontalAlignment="Left"  Margin="96,88,0,0" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
+            <Label  Height="33" Width="92" FontSize="12"  Content="New Password" Margin="6,92,152,203"/>
+            <PasswordBox x:Name="pass3" HorizontalAlignment="Left" Margin="115,126,0,0" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
+            <Label  Height="33"  Width="110" Margin="6,130,134,165" FontSize="12"  Content="Confirm password"/>
+            <Button x:Name="closeset" Height="24" Width="40" Margin="195,11,15,293"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="Closeset_Click">
                 <materialDesign:PackIcon Height="20" Width="20" Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
-            <Button Height="30" Width="120" Margin="117,144,13,120"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0">
+            <Button Height="30" Width="120" Margin="117,162,13,134"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="Edit_Click">
                 <materialDesign:PackIcon Height="25" Width="30" Kind="PlaylistEdit" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
-            <Label Height="33" Margin="0,167,138,89" FontSize="14" FontWeight="Bold" Content="Delete Account"/>
-            <PasswordBox x:Name="pass4" HorizontalAlignment="Left"  Margin="105,193,0,0" VerticalAlignment="Top" Height="28" Width="130" CaretBrush="#FF2247C5" Foreground="Black"/>
-            <Label Width="90" Margin="10,196,150,62" FontSize="12" Content="Your password"/>
-            <Button Height="30" Width="72" Margin="146,251,32,10"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0">
+            <Label Height="33" Margin="6,192,132,103" FontSize="14" FontWeight="Bold" Content="Delete Account"/>
+            <PasswordBox x:Name="pass4" HorizontalAlignment="Left"  Margin="104,220,0,0" VerticalAlignment="Top" Height="25" Width="130" CaretBrush="#FF2247C5" Foreground="Black" />
+            <Label Width="90" Height="30" Margin="10,224,150,74" FontSize="12" Content="Your password"/>
+            <Button Height="30" Width="72" Margin="146,280,32,18"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="Accept_Click">
                 <materialDesign:PackIcon Height="30" Width="30" Kind="Tick" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
-            <Button Height="30" Width="72" Margin="39,251,139,10"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0">
+            <Button Height="30" Width="72" Margin="39,280,139,18"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="Close_Click">
                 <materialDesign:PackIcon Height="30" Width="30" Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
-            <Label Margin="10,222,73,32" FontSize="12" Content="Do you want delete account?" FontStyle="Italic"/>
+            <Label Width="165" Height="33" Margin="10,247,75,48" FontSize="12" Content="Do you want delete account?" FontStyle="Italic"/>
         </Grid>
-        <Button x:Name="down" HorizontalAlignment="Left" Height="30" Margin="12,11,0,0" VerticalAlignment="Top" Width="161" Click="downradio_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Hidden">
+        <Button x:Name="down" HorizontalAlignment="Left" Height="30" Margin="12,11,0,0" VerticalAlignment="Top" Width="161" Click="downradio_Click" Background="#FF0064A0" BorderBrush="#FF005064" Visibility="Visible">
             <materialDesign:PackIcon Kind="ArrowDown" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Button>
+        <Label x:Name="passlabel" Content="" HorizontalAlignment="Left" Margin="506,8,0,0" VerticalAlignment="Top"  FontSize="18" Visibility="Hidden"/>
+
+        <ScrollViewer Height="100" Margin="175,390,182,7">
+            <TextBlock x:Name="comments" Text="{Binding MyText}"  Visibility="Visible" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="103"/>
+        </ScrollViewer>
+        <Label Content="Comments" HorizontalAlignment="Left" Margin="175,356,0,0" VerticalAlignment="Top" Width="84" FontSize="13" Height="35"/>
+        <materialDesign:PackIcon Kind="Comments" Height="25" Width="25" Margin="260,361,0,0"/>
+        <TextBox x:Name="comment" HorizontalAlignment="Left" Height="31" Margin="312,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Foreground="White" FontSize="12" CaretBrush="White"/>
+        <Button HorizontalAlignment="Left" Height="26" Margin="609,355,0,0" VerticalAlignment="Top" Width="97" Click="comment_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+            <materialDesign:PackIcon Kind="CommentPlus" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
     </Grid>
 </Window>

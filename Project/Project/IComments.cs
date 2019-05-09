@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    interface IFavorites
+    interface IComments
     {
-        string AddFavorite(Favorite favorite);
-        void DeleteFavorite(Favorite favorite);
+        void AddComment(Comment comment);
+        void DeleteComment(int number);
     }
 }
