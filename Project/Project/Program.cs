@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    interface IRating
+    class Program//програми радіо
     {
-       void Update(string name);
+
     }
 }

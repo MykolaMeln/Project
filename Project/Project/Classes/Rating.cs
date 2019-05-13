@@ -7,18 +7,16 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Rating : IRating
+    public class Rating
     {
-        public void Update(string name)
+        public string ID_User;
+        public string ID_Station;
+        public int rating;
+        public Rating(string ID_User, string ID_Station, int rating)
         {
-            string connectionString = @"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("UPDATE Radio_Stations SET Rating+=@rat WHERE Name_Station=@name",conn);
-            conn.Open();
-            cmd.Parameters.AddWithValue("@rat", 1);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.ExecuteNonQuery();
-            conn.Close();       
+            this.ID_User = ID_User;
+            this.ID_Station = ID_Station;
+            this.rating = rating;
         }
     }
 }

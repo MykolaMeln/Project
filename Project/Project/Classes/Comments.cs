@@ -12,14 +12,17 @@ namespace Project
         public List<Comment> comments = new List<Comment>();//список коментарів
         public Comments() { }
 
-        public void AddComment(Comment comment)//додавання коментаря в список
+        public void AddCommentInList(Comment comment)//додавання коментаря в список
         {
-            comments.Add(comment);
+            comments.Add(comment);       
+        }
+        public void AddComment(Comment comment)
+        {
             SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("INSERT INTO Comment(ID_User,Comment,Date) VALUES(@user, @comment, @date)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Comments(ID_User,Comment,Date) VALUES(@user, @com, @date)", conn);
             conn.Open();
             cmd.Parameters.AddWithValue("@user", comment.user);
-            cmd.Parameters.AddWithValue("@comment", comment.comment);
+            cmd.Parameters.AddWithValue("@com", comment.comment);
             cmd.Parameters.AddWithValue("@date", comment.date);
             cmd.ExecuteNonQuery();
             conn.Close();

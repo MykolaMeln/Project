@@ -31,51 +31,35 @@ namespace Project
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             User user = new User();
+            Account account = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 if ((login.Text.Length != 0) && (password.Password.ToString().Length != 0))
                 {
-                    conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "INSERT INTO Users (Login,Password,Admin) VALUES(@log,@pwd,@ind) ";
-                    if (login.Text.Length != 0)
-                    {
-                        cmd.Parameters.AddWithValue("@log", login.Text);
-                        user.Login = login.Text;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Length login = 0");
-                    }
-                    if (password.Password.ToString().Length != 0)
-                    {
-                        cmd.Parameters.AddWithValue("@pwd", password.Password.ToString());
-                        user.Password = password.Password.ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Length password = 0");
-                    }
+                    user.Login = login.Text;
+                    user.Password = password.Password.ToString();
                     int val = 0;
                     if (index.IsChecked == true)
                     {
                         val = 1;
                     }
-                    else
-                    {
-                        val = 0;
-                    }
-                    cmd.Parameters.AddWithValue("@ind", val);
                     user.Index = val;
+                    account = Account.getInstance(user);
+                    conn.Open();
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "INSERT INTO Users (Login,Password,Admin) VALUES(@log,@pwd,@ind) ";
+                    cmd.Parameters.AddWithValue("@log", account.Login);
+                    cmd.Parameters.AddWithValue("@pwd", account.Password);             
+                    cmd.Parameters.AddWithValue("@ind", account.Index);                 
                     cmd.ExecuteNonQuery();
                 }
                 else
                 {
-                    MessageBox.Show("Login and Password is NULL");
+                    MessageBox.Show("Login or Password is NULL");
                 }
             }
             Menu menu = new Menu();
-            menu.loginlabel.Content = login.Text;
+            menu.loginlabel.Content = account.Login;
             menu.Show();
             this.Close();
         }

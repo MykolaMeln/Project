@@ -61,7 +61,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Favorites.cs" />
+    <Compile Include="Classes\Ratings.cs" />
+    <Compile Include="CRating.xaml.cs">
+      <DependentUpon>CRating.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IComments.cs" />
     <Compile Include="IPrograms.cs" />
     <Compile Include="Classes\Programs.cs" />
@@ -69,13 +74,17 @@
     <Compile Include="Classes\Comments.cs" />
     <Compile Include="Favorite.cs" />
     <Compile Include="IFavorites.cs" />
-    <Compile Include="IRating.cs" />
+    <Compile Include="IRatings.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Classes\Radio.cs" />
     <Compile Include="Classes\Rating.cs" />
     <Compile Include="Classes\Stations.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Users.cs" />
+    <Page Include="CRating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Log_in.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +159,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\energy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StarGold.png" />
+    <Resource Include="Resources\StarWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

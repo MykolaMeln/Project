@@ -67,7 +67,7 @@ namespace Project
             this.Close();
         }
         public void Admin(string log, string pass)
-        {
+        {           
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             SqlDataReader da = new SqlCommand("SELECT Login, Password, Admin FROM Users", conn).ExecuteReader();

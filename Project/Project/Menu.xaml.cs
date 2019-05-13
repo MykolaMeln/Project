@@ -25,18 +25,21 @@ namespace Project
         SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");
         public Favorites favoritess;
         public Programs programs;
-        public Comments commentss;       
+        public Comments commentss;
+        public Ratings ratingss;
+        int index;
+        public Program p;
         public Menu()
         {
             InitializeComponent();
             StaticRating();
             programs = new Programs();
             LoadPrograms();
-            favoritess = new Favorites();
-            LoadFavorites();
+            favoritess = new Favorites();       
             commentss = new Comments();
             LoadComments();
             LoadInBlock();
+            ratingss = new Ratings();
         }
         private void LoadPrograms()
         {
@@ -50,12 +53,13 @@ namespace Project
             foreach (DataRow row in t.Rows)
             {
                 program = new Program(row[0].ToString(),row[1].ToString(),row[2].ToString(),row[3].ToString(),row[4].ToString());
-                programs.AddProgram(program);
+                programs.AddProgramInList(program);
             }     
             conn.Close();
         }
         private void LoadFavorites()
         {
+            favoritess.favorites.Clear();
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Favorites Where ID_User='" + loginlabel.Content.ToString() + "'", conn);
             DataSet ds = new DataSet();
@@ -65,10 +69,17 @@ namespace Project
             Favorite favorite;
             foreach (DataRow row in t.Rows)
             {
-                favorite = new Favorite(row[0].ToString(), row[1].ToString());
-                favoritess.AddFavorite(favorite);
+                favorite = new Favorite(row[0].ToString(), row[1].ToString());             
+                favoritess.AddFavoriteInList(favorite);
             }
             conn.Close();
+        }
+        private void ShowFavor()
+        {
+            for(int i=0; i<favoritess.favorites.Count; i++)
+            {
+                MessageBox.Show(favoritess.favorites[i].User+" "+ favoritess.favorites[i].Station);
+            }
         }
         private void LoadComments()
         {
@@ -82,34 +93,38 @@ namespace Project
             foreach (DataRow row in t.Rows)
             {
                 comment = new Comment(row[0].ToString(), row[1].ToString(), Convert.ToDateTime(row[2]));
-                commentss.AddComment(comment);
+                commentss.AddCommentInList(comment);
             }
             conn.Close();
         }
         private void LoadInBlock()
         {
             int k = 1;
-            string MyText = "";
             foreach(Comment com in commentss.comments)
             {
-                MyText += k.ToString() + ". " + com.user + ": " + com.comment + " " + com.date.ToString() + "\n";
+               comments.Items.Add(k.ToString() + ". " + com.user + ": " + com.comment + " " + com.date.ToString() + "\n");
                 k++;
             }
         }
         private void IsFavorite(string namestation)
         {
-            foreach(Favorite fav in favoritess.favorites)
+            int k = 0;
+            for (int i = 0; i < favoritess.favorites.Count; i++)
             {
-                if(fav.Station == namestation)
+                if (favoritess.favorites[i].Station.CompareTo(namestation)==0)
                 {
-                    addfav.Visibility = Visibility.Hidden;
-                    delfav.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    addfav.Visibility = Visibility.Visible;
-                    delfav.Visibility = Visibility.Hidden;
-                }
+                    k++;
+                }              
+            }
+            if(k==1)
+            {
+                delfav.Visibility = Visibility.Visible;
+                addfav.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                addfav.Visibility = Visibility.Visible;
+                delfav.Visibility = Visibility.Hidden;
             }
         }
         private void Programs()
@@ -154,8 +169,8 @@ namespace Project
         }
         private void Rating(string name)
         {
-            Rating rt = new Rating();
-            rt.Update(name);       
+          //  Rating rt = new Rating();
+                  //slider значення user and station
         }
         private void StaticRating()
         {
@@ -326,6 +341,7 @@ namespace Project
             if ((namestation.Text!="")&&(nameprogram.Text!="")&&(period.Text!="")&&(hourbegin.Text!="")&&(hourend.Text!=""))
             {
                 Program p = new Program(namestation.Text, nameprogram.Text, period.Text, hourbegin.Text, hourend.Text);
+                programs.AddProgramInList(p);
                 programs.AddProgram(p);
                 MessageBox.Show("Record Inserted Successfully");
             }
@@ -362,7 +378,7 @@ namespace Project
                 doubleanimation.From = 0;
                 doubleanimation.To = 295;
                 doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
-                showfav.BeginAnimation(Button.HeightProperty, doubleanimation);
+                favorites.BeginAnimation(Button.HeightProperty, doubleanimation);
             }
             else
               if (favorites.Height == 295)
@@ -371,13 +387,14 @@ namespace Project
                 doubleanimation.From = 295;
                 doubleanimation.To = 0;
                 doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
-                showfav.BeginAnimation(Button.HeightProperty, doubleanimation);
-                favorites.Visibility = Visibility.Hidden;
+                favorites.BeginAnimation(Button.HeightProperty, doubleanimation);
+             //   favorites.Visibility = Visibility.Hidden;
                 radioinfo.Visibility = Visibility.Visible;
             }
         }
         private void showfav_Click(object sender, RoutedEventArgs e)
         {
+            LoadFavorites();
             CloseFav();
             addprog.Visibility = Visibility.Hidden;
             deluser.Visibility = Visibility.Hidden;
@@ -393,7 +410,20 @@ namespace Project
         private void Button13_Click(object sender, RoutedEventArgs e)
         {
             Favorite fav = new Favorite(loginlabel.Content.ToString(), name.Content.ToString());
-            MessageBox.Show(favoritess.AddFavorite(fav));
+            int k = 0;
+            foreach (Favorite favor in favoritess.favorites)
+            {
+
+                if (favor.Station == fav.Station)
+                {
+                    k++;
+                }
+            }
+            if (k == 0)
+            {
+                MessageBox.Show(favoritess.AddFavorite(fav));
+                favoritess.AddFavoriteInList(fav);
+            }
             addfav.Visibility = Visibility.Hidden;
             delfav.Visibility = Visibility.Visible;
         }
@@ -401,6 +431,7 @@ namespace Project
         {
             Favorite fav = new Favorite(loginlabel.Content.ToString(), name.Content.ToString());
             favoritess.DeleteFavorite(fav);
+            favoritess.favorites.Remove(fav);
             addfav.Visibility = Visibility.Visible;
             delfav.Visibility = Visibility.Hidden;
         }
@@ -440,6 +471,7 @@ namespace Project
 
         private void downradio_Click(object sender, RoutedEventArgs e)
         {
+            LoadFavorites();
             ShowRadio();
             down.Visibility = Visibility.Hidden;
         }
@@ -541,6 +573,7 @@ namespace Project
 
         private void comment_Click(object sender, RoutedEventArgs e)
         {
+            comments.Items.Clear();
             string BoldText, CommentText;
             DateTime ItalicText;
             if (comment.Text != "")
@@ -549,14 +582,16 @@ namespace Project
                 ItalicText = DateTime.Now.Date.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute);
                 CommentText = comment.Text;
                 Comment commentt = new Comment(BoldText, CommentText, ItalicText);
+                commentss.AddCommentInList(commentt);
                 commentss.AddComment(commentt);
+                LoadInBlock();
                 comment.Text = "";
             }
             else
             {
                 MessageBox.Show("Comment length is null!");
             }
-            LoadInBlock();
+
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -566,17 +601,17 @@ namespace Project
             if (index != -1)
             {
                 int k = 0;
-                foreach (Program p in programs.programs)
+                for(int i=0; i<programs.programs.Count; i++)
                 {
-                    if (p.Id_Station == name.Content.ToString())
+                    if (programs.programs[i].Id_Station == name.Content.ToString())
                     {
                         if(k==index)
                         {
-                            programs.DeleteProgram(p);
+                            programs.DeleteProgram(programs.programs[i]);
                             Programs();
                         }
-                        else
-                            k++;
+                       else
+                           k++;
                     }
                     
                 }
@@ -587,9 +622,109 @@ namespace Project
             }
         }
 
+        private void ShowEdit()
+        {
+            if (edits.Height == 0)
+            {
+                edits.Visibility = Visibility.Visible;
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 0;
+                doubleanimation.To = 300;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                edits.BeginAnimation(Button.HeightProperty, doubleanimation);
+            }
+            else
+              if (edits.Height == 300)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 300;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                edits.BeginAnimation(Button.HeightProperty, doubleanimation);
+                edits.Visibility = Visibility.Hidden;
+                p = null;
+                namest.Text = "";
+                namepr.Text = "";
+                per.Text = "";
+                hourb.Text = "";
+                houre.Text = "";
+            }
+        }
+        private void CloseEdit()
+        {
+            if (edits.Height == 300)
+            {
+                DoubleAnimation doubleanimation = new DoubleAnimation();
+                doubleanimation.From = 300;
+                doubleanimation.To = 0;
+                doubleanimation.Duration = TimeSpan.FromSeconds(0.3);
+                edits.BeginAnimation(Button.HeightProperty, doubleanimation);
+                edits.Visibility = Visibility.Hidden;
+                p = null;
+                namest.Text = "";
+                namepr.Text = "";
+                per.Text = "";
+                hourb.Text = "";
+                houre.Text = "";
+            }
+        }
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            index = rozklad.SelectedIndex;
 
-        }       
+            if (index != -1)
+            {
+                int k = 0;
+                for (int i = 0; i < programs.programs.Count; i++)
+                {
+                    if (programs.programs[i].Id_Station == name.Content.ToString())
+                    {
+                        if (k == index)
+                        {
+                            namest.Text = programs.programs[i].Id_Station;
+                            namest.IsReadOnly = true;
+                            namepr.Text = programs.programs[i].Name_program;
+                            per.Text = programs.programs[i].Period;
+                            hourb.Text = programs.programs[i].Hour_begin;
+                            houre.Text = programs.programs[i].Hour_end;
+                            p = programs.programs[i];
+                            ShowEdit();
+                        }
+                        else
+                            k++;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select one row!");
+            }
+
+        }
+
+        private void editaccept_Click(object sender, RoutedEventArgs e)
+        {
+            if (namepr.Text != "" && per.Text != "" && hourb.Text != "" && houre.Text != "")
+            {          
+                string namep = namepr.Text;
+                string pe = per.Text;
+                string houb = hourb.Text;
+                string houe = houre.Text;
+                programs.DeleteProgram(p);
+                Program program = new Program(namest.Text, namep, pe, houb, houe);
+                programs.AddProgramInList(program);
+                programs.AddProgram(program);
+                CloseEdit();
+                Programs();         
+
+            }
+            else
+                MessageBox.Show("Incorect values!");
+        }
+
+        private void closeedit_Click(object sender, RoutedEventArgs e)
+        {
+            CloseEdit();
+        }
     }
 }

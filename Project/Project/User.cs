@@ -18,13 +18,6 @@ namespace Project
             Password = password;
             Index = index;
         }
-        public User(User user)
-        {
-            this.Login = user.Login;
-            this.Password = user.Password;
-            this.Index = user.Index;
-        }
-
-
+        
     }
 }

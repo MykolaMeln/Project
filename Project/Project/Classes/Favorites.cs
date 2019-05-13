@@ -41,6 +41,10 @@ namespace Project
             }
             return res;
         }
+        public void AddFavoriteInList(Favorite favorite)
+        {
+            favorites.Add(favorite);
+        }
         public void DeleteFavorite(Favorite favorite)
         {
             SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS1;Initial Catalog=project;Integrated Security=True");

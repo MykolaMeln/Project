@@ -128,3 +128,6 @@ E:\Project\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 E:\Project\Project\Project\obj\Debug\Project.csproj.CopyComplete
 E:\Project\Project\Project\obj\Debug\Project.exe
 E:\Project\Project\Project\obj\Debug\Project.pdb
+C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\CRating.g.cs
+C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Ноут\Desktop\Project\Project\Project\obj\Debug\CRating.baml

@@ -47,15 +47,16 @@
                 </Ellipse.Fill>
             </Ellipse>
             <Label x:Name="name" Content="Change Radio" HorizontalAlignment="Left" Height="30" Margin="10,112,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5" FontSize="15"/>
-            <Label x:Name="chast" Content="Chastota" Margin="11,135,539,111"/>
-            <Label x:Name="chastota" Content="120 Ghz" Margin="71,135,532,111" FontWeight="Bold"/>
+            <Label x:Name="chast" Height="30" Content="Chastota" Margin="11,115,539,111"/>
+            <Label x:Name="chastota" Height="30" Content="120 Ghz" Margin="71,135,532,133" FontWeight="Bold"/>
             <DataGrid x:Name="rozklad" HorizontalAlignment="Left" Height="265" Margin="141,10,0,0" VerticalAlignment="Top" Width="512" Background="#00000000" Foreground="#DDFDFDFD" CanUserResizeColumns="False"/>
-            <Button x:Name="delfav" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="28,165,0,0" VerticalAlignment="Top" Width="65" Click="Button15_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <Button x:Name="delfav" Visibility="Hidden" HorizontalAlignment="Left" Height="30" Margin="36,165,0,0" VerticalAlignment="Top" Width="65" Click="Button15_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
                 <materialDesign:PackIcon Kind="Favorite" HorizontalAlignment="Center" Height="30" Width="30" VerticalAlignment="Center" Background="Transparent"/>
             </Button>
-            <Button x:Name="addfav" Visibility="Visible" HorizontalAlignment="Left" Height="30" Margin="28,165,0,0" VerticalAlignment="Top" Width="65" Click="Button13_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <Button x:Name="addfav" Visibility="Visible" HorizontalAlignment="Left" Height="30" Margin="36,165,0,0" VerticalAlignment="Top" Width="65" Click="Button13_Click" Background="{x:Null}" BorderBrush="{x:Null}" >
                 <materialDesign:PackIcon Kind="FavoriteOutline" HorizontalAlignment="Center" Height="30" Width="30" VerticalAlignment="Center" Background="Transparent"/>
             </Button>
+            <local:CRating x:Name="rat" HorizontalAlignment="Left" Height="34" Margin="4,204,0,0" VerticalAlignment="Top" Width="140"/>
             <Button HorizontalAlignment="Left" Height="26" Margin="76,253,0,0" VerticalAlignment="Top" Width="46" Click="edit_Click" Background="#FF0064A0" BorderBrush="#FF005064">
                 <materialDesign:PackIcon Kind="Edit" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
@@ -85,7 +86,6 @@
             <Label Content="Name Program" Width="109" Margin="0,49,181,205" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35"/>
             <TextBox x:Name="nameprogram" HorizontalAlignment="Left" Height="28" Margin="340,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
             <Label Content="Period" Width="70" Margin="0,85,169,174" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" RenderTransformOrigin="0.5,0.5"/>
-
             <TextBox x:Name="period" HorizontalAlignment="Left" Height="28" Margin="340,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
             <Label Content="Hour begin" Height="35" Margin="0,119,169,135" FontSize="13" HorizontalAlignment="Right" Width="96" VerticalAlignment="Center"/>
             <TextBox x:Name="hourbegin" HorizontalAlignment="Left" Height="28" Margin="340,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
@@ -95,19 +95,19 @@
                 <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
         </Grid>
-        <DataGrid x:Name="ratings" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="180" Margin="703,83,0,0" Background="#00FAFAFA" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" VerticalGridLinesBrush="#00000000" HorizontalGridLinesBrush="#00DEDEDE" HeadersVisibility="None"/>
-        <Label Content="Ratings" HorizontalAlignment="Left" Height="34" Margin="770,44,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.5,0.5" FontSize="17"/>
+        <DataGrid x:Name="ratings" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="180" Margin="703,91,0,0" Background="#00FAFAFA" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" VerticalGridLinesBrush="#00000000" HorizontalGridLinesBrush="#00DEDEDE" HeadersVisibility="None"/>
+        <Label Content="Ratings" HorizontalAlignment="Left" Height="34" Margin="770,57,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.5,0.5" FontSize="17"/>
         <Button x:Name="showfav" HorizontalAlignment="Left" Height="30" Margin="189,11,0,0" VerticalAlignment="Top" Width="101" Click="showfav_Click" Background="#FF0064A0" BorderBrush="#FF005064">
             <materialDesign:PackIcon Kind="Favorite" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Button>
-        <Grid x:Name="favorites" Margin="189,52,449,149" Height="0" Width="250" Panel.ZIndex="1" Background="#FF0064A0" Visibility="Hidden">
+        <Grid x:Name="favorites" Margin="189,52,492,149" Height="0" Panel.ZIndex="1" Background="#FF0064A0" Visibility="Hidden">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="9" ShadowDepth="2"/>
             </Grid.Effect>
-            <DataGrid x:Name="favorit" Margin="10,34,10,10" Background="#00F0FFFF" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Foreground="#DDFFFFFF" FontSize="14">
+            <DataGrid x:Name="favorit" Margin="10,34,24,10" Background="#00F0FFFF" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Foreground="#DDFFFFFF" FontSize="14">
             </DataGrid>
-            <Label Content="Favorites" HorizontalAlignment="Left" Margin="89,0,0,0" VerticalAlignment="Top" Height="33" Width="80" Foreground="#DDFFFFFF" FontSize="14"/>
-            <Button x:Name="closefav" Height="24" Width="40" Margin="204,5,6,266"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="closefav_Click">
+            <Label Content="Favorites" HorizontalAlignment="Left" Margin="63,1,0,0" VerticalAlignment="Top" Height="33" Width="80" Foreground="#DDFFFFFF" FontSize="14"/>
+            <Button x:Name="closefav" Height="24" Width="40" Margin="143,5,24,266"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="closefav_Click">
                 <materialDesign:PackIcon Height="20" Width="20" Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
             </Button>
         </Grid>
@@ -148,15 +148,37 @@
             <materialDesign:PackIcon Kind="ArrowDown" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Button>
         <Label x:Name="passlabel" Content="" HorizontalAlignment="Left" Margin="506,8,0,0" VerticalAlignment="Top"  FontSize="18" Visibility="Hidden"/>
-
-        <ScrollViewer Height="100" Margin="175,390,182,7">
-            <TextBlock x:Name="comments" Text="{Binding MyText}"  Visibility="Visible" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="103"/>
-        </ScrollViewer>
+        <ListBox x:Name="comments" Visibility="Visible"  VerticalAlignment="Top"  Height="103" Margin="209,387,229,0"/>
         <Label Content="Comments" HorizontalAlignment="Left" Margin="175,356,0,0" VerticalAlignment="Top" Width="84" FontSize="13" Height="35"/>
         <materialDesign:PackIcon Kind="Comments" Height="25" Width="25" Margin="260,361,0,0"/>
         <TextBox x:Name="comment" HorizontalAlignment="Left" Height="31" Margin="312,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Foreground="White" FontSize="12" CaretBrush="White"/>
         <Button HorizontalAlignment="Left" Height="26" Margin="609,355,0,0" VerticalAlignment="Top" Width="97" Click="comment_Click" Background="#FF0064A0" BorderBrush="#FF005064">
             <materialDesign:PackIcon Kind="CommentPlus" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
+        <Grid x:Name="edits" Margin="189,50,464,147" Height="0" Width="233" Panel.ZIndex="1" Background="#FF0064A0" Visibility="Hidden">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="9" ShadowDepth="2"/>
+            </Grid.Effect>
+            <Label Content="Edit" HorizontalAlignment="Left" Margin="74,9,0,0" VerticalAlignment="Top" Height="33" Width="50" Foreground="#DDFFFFFF" FontSize="16"/>
+            <Button x:Name="closeedit" Height="24" Width="40" Margin="161,13,34,260"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="closeedit_Click">
+                <materialDesign:PackIcon Height="20" Width="20" Kind="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
+            </Button>
+            <Label Content="Name Station" Height="34" Width="100" Margin="0,59,125,204" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox x:Name="namest" HorizontalAlignment="Left" Height="28" Margin="100,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118"/>
+            <Label Content="Name Program" Width="106" Margin="0,92,126,168" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35"/>
+            <TextBox x:Name="namepr" HorizontalAlignment="Left" Height="28" Margin="100,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118"/>
+            <Label Content="Period" Width="50" Margin="0,123,136,144" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" RenderTransformOrigin="0.5,0.5"/>
+            <TextBox x:Name="per" HorizontalAlignment="Left" Height="28" Margin="100,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Hour begin" Height="35" Margin="0,154,132,108" FontSize="13" HorizontalAlignment="Right" Width="81" VerticalAlignment="Center"/>
+            <TextBox x:Name="hourb" HorizontalAlignment="Left" Height="28" Margin="99,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="122"/>
+            <Label Content="Hour end" Height="32" Width="65" Margin="0,186,138,79" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox x:Name="houre" HorizontalAlignment="Left" Height="28" Margin="99,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="122"/>
+            <Button HorizontalAlignment="Left" Height="29" Margin="410,215,0,0" VerticalAlignment="Top" Width="85" Click="Button10_Click" Background="#FF0064A0" BorderBrush="#FF005064">
+                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button x:Name="editaccept" Height="33" Width="93" Margin="73,235,69,29"  HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF0064A0" Background="#FF0064A0" Click="editaccept_Click">
+                <materialDesign:PackIcon Height="25" Width="25" Kind="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#fff"/>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
